@@ -1,0 +1,14 @@
+{
+  "CHANGELOG - unreleased": {
+    "prefix": "unreleased",
+    "body": [
+      "## [Unreleased] - YYYY-MM-DD",
+      "#### Added",
+      "#### Changed",
+      "#### Deprecated",
+      "#### Removed",
+      "#### Fixed",
+      "#### Security"
+    ]
+  }
+}

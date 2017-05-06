@@ -1,0 +1,3 @@
+# Snippets
+Code editor snippets.
+
