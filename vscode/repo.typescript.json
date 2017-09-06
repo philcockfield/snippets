@@ -125,6 +125,12 @@
 			"css({$0}),"
 		]
 	},
+	"boxSizing": {
+		"prefix": "box",
+		"body": [
+			"boxSizing: 'border-box',"
+		]
+	},
 	"for of": {
 		"prefix": "forof",
 		"body": [
@@ -169,23 +175,10 @@
 			"${1:const} { $0 } = ${2:this.props};"
 		]
 	},
-	"@action private (mobx)": {
-		"prefix": "pa",
+	"private function": {
+		"prefix": "pf",
 		"body": [
-			"${3:@action}",
 			"private ${1:name} = ($2) => {$0}"
-		]
-	},
-	"public observable (mobx)": {
-		"prefix": "po",
-		"body": [
-			"@observable public ${1:name} = ${2:value};"
-		]
-	},
-	"@observable (mobx)": {
-		"prefix": "oo",
-		"body": [
-			"@observable "
 		]
 	},
 	"require": {
@@ -230,10 +223,18 @@
 			"import * as R from 'ramda';$0"
 		]
 	},
-	"describe": {
-		"prefix": "dess",
+	"describe ()=>": {
+		"prefix": "des",
 		"body": [
 			"describe('${1:suite}', () => {",
+			"  $0",
+			"});"
+		]
+	},
+	"describe (function)": {
+		"prefix": "desf",
+		"body": [
+			"describe('${1:suite}', function() {",
 			"  $0",
 			"});"
 		]
@@ -253,9 +254,7 @@
 	"it (async)": {
 		"prefix": "ita",
 		"body": [
-			"it('${1:does}', async () => {",
-			"  $0",
-			"});"
+			"it('${1:does}', async () => {$0});"
 		]
 	},
 	"it (props)": {
@@ -339,13 +338,13 @@
 		]
 	},
 	"expect - to.equal": {
-		"prefix": "exe",
+		"prefix": "exee",
 		"body": [
 			"expect(${1:value}).to.equal(${2:result});$0"
 		]
 	},
 	"expect - to.eql": {
-		"prefix": "exee",
+		"prefix": "exe",
 		"body": [
 			"expect(${1:value}).to.eql(${2:result});$0"
 		]
@@ -369,10 +368,16 @@
 			"expect(fn).to.throw(/${1:error-text}/);"
 		]
 	},
-	"element": {
+	"element (closed)": {
 		"prefix": "ell",
 		"body": [
 			"<${1:tag}/>$0"
+		]
+	},
+	"element": {
+		"prefix": "el",
+		"body": [
+			"<${1:tag}>$0</${1:tag}>"
 		]
 	},
 	"css: background": {
@@ -385,6 +390,18 @@
 		"prefix": "bgr",
 		"body": [
 			"backgroundColor: 'rgba(255, 0, 0, 0.1)', /* RED */ $0"
+		]
+	},
+	"css: background (GREEN)": {
+		"prefix": "bgg",
+		"body": [
+			"backgroundColor: 'rgba(0, 255, 0, 0.1)', /* GREEN */ $0"
+		]
+	},
+	"css: background (BLUE)": {
+		"prefix": "bgb",
+		"body": [
+			"backgroundColor: 'rgba(0, 0, 255, 0.1)', /* BLUE */ $0"
 		]
 	},
 	"css: Absolute": {
@@ -446,6 +463,32 @@
 			"className={ css.className(styles.$1) }$0"
 		]
 	},
+	"value: 100%": {
+		"prefix": "pp",
+		"body": [
+			"'${1:100}%',"
+		]
+	},
+	"event handler": {
+		"prefix": "eh",
+		"body": [
+			"export type ${1:Click}Event = {$0};",
+			"export type ${1:Click}EventHandler = (e: ${1:Click}Event) => void;"
+		]
+	},
+	"export type": {
+		"prefix": "et",
+		"body": [
+			"export type "
+		]
+	},
+	"ref (react)": {
+		"prefix": "ref",
+		"body": [
+			"private ${1:name}: ${2:Type};",
+			"private ${1:name}Ref = (ref: ${2:Type}) => this.${1:name} = ref;$0"
+		]
+	},
 	"React: lifecycle": {
 		"prefix": "life",
 		"body": [
@@ -468,7 +511,7 @@
 			"/**",
 			" * $0",
 			" */",
-			"export class ${1:Name} extends React.Component<I${1:Name}Props, void> {",
+			"export class ${1:Name} extends React.Component<I${1:Name}Props, {}> {",
 			"  public render() {",
 			"    return (",
 			"      <div>${1:Name}</div>",
@@ -489,12 +532,11 @@
 			"/**",
 			" * $0",
 			" */",
-			"const ${1:Name} = ({}: I${1:Name}Props) => {",
+			"export const ${1:Name} = (props: I${1:Name}Props) => {",
 			"  return (",
 			"    <${2:div}>${1:Name}</${2:div}>",
 			"  );",
 			"};",
-			"export { ${1:Name} }",
 			""
 		]
 	},
@@ -502,73 +544,6 @@
 		"prefix": "danger",
 		"body": [
 			"<div dangerouslySetInnerHTML={ __html: $0 } />"
-		]
-	},
-	"GraphQL: Field Type": {
-		"prefix": "gf",
-		"body": [
-			"${1:key}: { type: gql.${2:GraphQLString} },$0"
-		]
-	},
-	"GraphQL: List": {
-		"prefix": "gl",
-		"body": [
-			"new gql.GraphQLList(gql.${1:GraphQLString})$0"
-		]
-	},
-	"GraphQL: Description Field": {
-		"prefix": "desc",
-		"body": [
-			"description: '${1:description}',$0"
-		]
-	},
-	"GraphQL: Object": {
-		"prefix": "go",
-		"body": [
-			"export const ${1:TypeName}Type = new gql.GraphQLObjectType({",
-			" name: '${1:TypeName}',",
-			"  description: '$0',",
-			"  fields: {",
-			"  },",
-			"});"
-		]
-	},
-	"GraphQL: imports": {
-		"prefix": "gimp",
-		"body": [
-			"import {",
-			"  GraphQLBoolean,",
-			"  GraphQLEnumType,",
-			"  GraphQLFloat,",
-			"  GraphQLID,",
-			"  GraphQLInt,",
-			"  GraphQLInterfaceType,",
-			"  GraphQLList,",
-			"  GraphQLNonNull,",
-			"  GraphQLObjectType,",
-			"  GraphQLScalarType,",
-			"  GraphQLSchema,",
-			"  GraphQLString,",
-			"}",
-			"from 'graphql';"
-		]
-	},
-	"StoryBook: storiesOf": {
-		"prefix": "so",
-		"body": [
-			"import * as React from 'react';",
-			"import { describe } from '../../common/storybook';",
-			"import { ${2:name} } from './${2:name}';",
-			"",
-			"",
-			"describe('${1:primitives}', {",
-			"  title: '${3:title}',",
-			"})",
-			"  .add('${2:name}', () => {",
-			"    return (",
-			"      <${2:name} />",
-			"    );",
-			"  });"
 		]
 	}
 }
