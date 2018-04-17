@@ -1,549 +1,462 @@
 {
-	"update": {
-		"prefix": "up",
-		"body": [
-			"public update(${1:e}) {",
-			"  $0",
-			"}",
-			""
-		]
-	},
-	"async": {
-		"prefix": "aa",
-		"body": [
-			"async $0"
-		]
-	},
-	"await": {
-		"prefix": "a",
-		"body": [
-			"await $0"
-		]
-	},
-	"return promise": {
-		"prefix": "retp",
-		"body": [
-			"return new Promise((resolve, reject) => {",
-			"  $0",
-			"});"
-		]
-	},
-	"return (...)": {
-		"prefix": "rett",
-		"body": [
-			"return ($0);"
-		]
-	},
-	"interface": {
-		"prefix": "int",
-		"body": [
-			"export interface I${1:Name} {$0}"
-		]
-	},
-	"template string placeholder": {
-		"prefix": "sp",
-		"body": [
-			"\\$\\{$0\\}"
-		]
-	},
-	"if": {
-		"prefix": "iff",
-		"body": [
-			"if (${1:condition}) {",
-			"  $0",
-			"}"
-		]
-	},
-	"if/else": {
-		"prefix": "ife",
-		"body": [
-			"if (${1:condition}) {",
-			"  $0",
-			"} else {",
-			"}"
-		]
-	},
-	"if (single line)": {
-		"prefix": "ifs",
-		"body": [
-			"if (${1:condition}) { $0; }"
-		]
-	},
-	"const": {
-		"prefix": "cc",
-		"body": [
-			"const $0"
-		]
-	},
-	"export const": {
-		"prefix": "ec",
-		"body": [
-			"export const $0"
-		]
-	},
-	"export": {
-		"prefix": "e",
-		"body": [
-			"export $0"
-		]
-	},
-	"export default": {
-		"prefix": "ed",
-		"body": [
-			"export default $0"
-		]
-	},
-	"function": {
-		"prefix": "fn",
-		"body": [
-			"${1:export }${2:async }function ${3:name}($4) {",
-			"  $0",
-			"}"
-		]
-	},
-	"Arrow Function": {
-		"prefix": "ff",
-		"body": [
-			"($1) => $0"
-		]
-	},
-	"{};": {
-		"prefix": "bb",
-		"body": [
-			"{$0};"
-		]
-	},
-	"{},": {
-		"prefix": "bv",
-		"body": [
-			"{$0},"
-		]
-	},
-	"css({}),": {
-		"prefix": "bc",
-		"body": [
-			"css({$0}),"
-		]
-	},
-	"boxSizing": {
-		"prefix": "box",
-		"body": [
-			"boxSizing: 'border-box',"
-		]
-	},
-	"for of": {
-		"prefix": "forof",
-		"body": [
-			"for (const ${1:item} of ${2:items}) {",
-			"  $0",
-			"}"
-		]
-	},
-	"reduce": {
-		"prefix": "reduce",
-		"body": [
-			"reduce((acc, value, i) => {$0}, ${1:initial});"
-		]
-	},
-	"console.log": {
-		"prefix": "ll",
-		"body": [
-			"console.log(\"${1:title}\", ${2:$1});"
-		]
-	},
-	"console.log (simple)": {
-		"prefix": "lll",
-		"body": [
-			"console.log($0);"
-		]
-	},
-	"console.log (new line)": {
-		"prefix": "ln",
-		"body": [
-			"console.log();"
-		]
-	},
-	"console.log (HR)": {
-		"prefix": "lhr",
-		"body": [
-			"console.log(\"-------------------------------------------\");"
-		]
-	},
-	"Destructure Props": {
-		"prefix": "da",
-		"body": [
-			"${1:const} { $0 } = ${2:this.props};"
-		]
-	},
-	"private function": {
-		"prefix": "pf",
-		"body": [
-			"private ${1:name} = ($2) => {$0}"
-		]
-	},
-	"require": {
-		"prefix": "rrr",
-		"body": [
-			"require('${1}');$0"
-		]
-	},
-	"import": {
-		"prefix": "imp",
-		"body": [
-			"import ${1:* as }${2:module} from '${3:module}';$0"
-		]
-	},
-	"import { part }": {
-		"prefix": "impp",
-		"body": [
-			"import { ${3:part} } from '${2:module}';$0"
-		]
-	},
-	"import React": {
-		"prefix": "impr",
-		"body": [
-			"import * as React from 'react';$0"
-		]
-	},
-	"import ReactNative": {
-		"prefix": "imprn",
-		"body": [
-			"import { ${1:View} } from 'react-native';$0"
-		]
-	},
-	"export from": {
-		"prefix": "ef",
-		"body": [
-			"export { ${2:Part} } from './${1:path}'$0"
-		]
-	},
-	"import Ramda": {
-		"prefix": "impra",
-		"body": [
-			"import * as R from 'ramda';$0"
-		]
-	},
-	"describe ()=>": {
-		"prefix": "des",
-		"body": [
-			"describe('${1:suite}', () => {",
-			"  $0",
-			"});"
-		]
-	},
-	"describe (function)": {
-		"prefix": "desf",
-		"body": [
-			"describe('${1:suite}', function() {",
-			"  $0",
-			"});"
-		]
-	},
-	"it": {
-		"prefix": "itt",
-		"body": [
-			"it('${1:does}', () => {$0});"
-		]
-	},
-	"it (code)": {
-		"prefix": "itc",
-		"body": [
-			"it('`${1:does}`', () => {$0});"
-		]
-	},
-	"it (async)": {
-		"prefix": "ita",
-		"body": [
-			"it('${1:does}', async () => {$0});"
-		]
-	},
-	"it (props)": {
-		"prefix": "itp",
-		"body": [
-			"it('`${1:does}`', () => this.props({ $0 }));"
-		]
-	},
-	"describe.only": {
-		"prefix": "describeo",
-		"body": [
-			"describe.only"
-		]
-	},
-	"describe.skip": {
-		"prefix": "describes",
-		"body": [
-			"describe.skip"
-		]
-	},
-	"it.only": {
-		"prefix": "ito",
-		"body": [
-			"it.only"
-		]
-	},
-	"it.skip": {
-		"prefix": "its",
-		"body": [
-			"it.skip"
-		]
-	},
-	"beforeEach": {
-		"prefix": "be",
-		"body": [
-			"beforeEach(() => {$0});"
-		]
-	},
-	"beforeEach (async)": {
-		"prefix": "bea",
-		"body": [
-			"beforeEach(async () => {$0});"
-		]
-	},
-	"Comment - Docs": {
-		"prefix": "qd",
-		"body": [
-			"/**",
-			" * $0",
-			" */"
-		]
-	},
-	"Comment - Horizontal Rule": {
-		"prefix": "hr",
-		"body": [
-			"// -----------------------------------------------------------------------------"
-		]
-	},
-	"Comment - Setup initial conditions": {
-		"prefix": "setup",
-		"body": [
-			"// Setup initial conditions."
-		]
-	},
-	"Comment - Finish up": {
-		"prefix": "finish",
-		"body": [
-			"// Finish up."
-		]
-	},
-	"Comment - TEMP": {
-		"prefix": "temp",
-		"body": [
-			"// TEMP"
-		]
-	},
-	"Comment - TSLint Disable Line": {
-		"prefix": "tsld",
-		"body": [
-			"// tslint:disable-line"
-		]
-	},
-	"expect - to.equal": {
-		"prefix": "exee",
-		"body": [
-			"expect(${1:value}).to.equal(${2:result});$0"
-		]
-	},
-	"expect - to.eql": {
-		"prefix": "exe",
-		"body": [
-			"expect(${1:value}).to.eql(${2:result});$0"
-		]
-	},
-	"expect - to.contain": {
-		"prefix": "ecc",
-		"body": [
-			"expect(${1:value}).to.contain(${2:result});$0"
-		]
-	},
-	"expect - instanceof": {
-		"prefix": "eit",
-		"body": [
-			"expect(${1:value}).to.be.an.instanceof(${2:Type});$0"
-		]
-	},
-	"expect - to throw": {
-		"prefix": "ett",
-		"body": [
-			"const fn = () => {$0};",
-			"expect(fn).to.throw(/${1:error-text}/);"
-		]
-	},
-	"element (closed)": {
-		"prefix": "ell",
-		"body": [
-			"<${1:tag}/>$0"
-		]
-	},
-	"element": {
-		"prefix": "el",
-		"body": [
-			"<${1:tag}>$0</${1:tag}>"
-		]
-	},
-	"css: background": {
-		"prefix": "bg",
-		"body": [
-			"background: $0"
-		]
-	},
-	"css: background (RED)": {
-		"prefix": "bgr",
-		"body": [
-			"backgroundColor: 'rgba(255, 0, 0, 0.1)', /* RED */ $0"
-		]
-	},
-	"css: background (GREEN)": {
-		"prefix": "bgg",
-		"body": [
-			"backgroundColor: 'rgba(0, 255, 0, 0.1)', /* GREEN */ $0"
-		]
-	},
-	"css: background (BLUE)": {
-		"prefix": "bgb",
-		"body": [
-			"backgroundColor: 'rgba(0, 0, 255, 0.1)', /* BLUE */ $0"
-		]
-	},
-	"css: Absolute": {
-		"prefix": "abs",
-		"body": [
-			"Absolute: ${1:'${2}'},$0"
-		]
-	},
-	"css: rgba": {
-		"prefix": "rgba",
-		"body": [
-			"${1:'}rgba(${2:255}, ${2:255}, ${2:255}, 0.${3:3})${1:'}$0"
-		]
-	},
-	"css: position relative": {
-		"prefix": "pr",
-		"body": [
-			"position: 'relative',$0"
-		]
-	},
-	"css: border": {
-		"prefix": "border",
-		"body": [
-			"border$0: `solid 1px \\${color.format(${1:-0.2})}`,"
-		]
-	},
-	"css: display flex": {
-		"prefix": "flex",
-		"body": [
-			"display: 'flex',",
-			"flexDirection: 'row',",
-			"justifyContent: 'center',",
-			"alignItems: 'center',"
-		]
-	},
-	"css: styles={ }": {
-		"prefix": "stylee",
-		"body": [
-			"style={ styles.$1 }$0"
-		]
-	},
-	"css: { ...styles.base }": {
-		"prefix": "css",
-		"body": [
-			"{...styles.$1}$0"
-		]
-	},
-	"const style = ": {
-		"prefix": "cs",
-		"body": [
-			"const ${1:styles} = {",
-			"  base: css({$0}),",
-			"};"
-		]
-	},
-	"css: className": {
-		"prefix": "cn",
-		"body": [
-			"className={ css.className(styles.$1) }$0"
-		]
-	},
-	"value: 100%": {
-		"prefix": "pp",
-		"body": [
-			"'${1:100}%',"
-		]
-	},
-	"event handler": {
-		"prefix": "eh",
-		"body": [
-			"export type ${1:Click}Event = {$0};",
-			"export type ${1:Click}EventHandler = (e: ${1:Click}Event) => void;"
-		]
-	},
-	"export type": {
-		"prefix": "et",
-		"body": [
-			"export type "
-		]
-	},
-	"ref (react)": {
-		"prefix": "ref",
-		"body": [
-			"private ${1:name}: ${2:Type};",
-			"private ${1:name}Ref = (ref: ${2:Type}) => this.${1:name} = ref;$0"
-		]
-	},
-	"React: lifecycle": {
-		"prefix": "life",
-		"body": [
-			"public componentWillMount() {}",
-			"public componentDidMount() {}",
-			"public componentWillReceiveProps(nextProps) {}",
-			"public shouldComponentUpdate(nextProps, nextState) {}",
-			"public componentWillUpdate(nextProps, nextState) {}",
-			"public componentDidUpdate(prevProps, prevState) {}",
-			"public componentWillUnmount() {}"
-		]
-	},
-	"React Class Component": {
-		"prefix": "tsx",
-		"body": [
-			"import * as React from 'react';",
-			"",
-			"export interface I${1:Name}Props {}",
-			"",
-			"/**",
-			" * $0",
-			" */",
-			"export class ${1:Name} extends React.Component<I${1:Name}Props, {}> {",
-			"  public render() {",
-			"    return (",
-			"      <div>${1:Name}</div>",
-			"    );",
-			"  }",
-			"}",
-			""
-		]
-	},
-	"React Stateless Component": {
-		"prefix": "tsxf",
-		"body": [
-			"import * as React from 'react';",
-			"",
-			"export interface I${1:Name}Props {}",
-			"",
-			"",
-			"/**",
-			" * $0",
-			" */",
-			"export const ${1:Name} = (props: I${1:Name}Props) => {",
-			"  return (",
-			"    <${2:div}>${1:Name}</${2:div}>",
-			"  );",
-			"};",
-			""
-		]
-	},
-	"dangerouslySetInnerHTML": {
-		"prefix": "danger",
-		"body": [
-			"<div dangerouslySetInnerHTML={ __html: $0 } />"
-		]
-	}
+  "update": {
+    "prefix": "up",
+    "body": ["public update(${1:e}) {", "  $0", "}", ""]
+  },
+  "async": {
+    "prefix": "aa",
+    "body": ["async $0"]
+  },
+  "await": {
+    "prefix": "a",
+    "body": ["await $0"]
+  },
+  "return promise": {
+    "prefix": "retp",
+    "body": ["return new Promise((resolve, reject) => {", "  $0", "});"]
+  },
+  "return (...)": {
+    "prefix": "rett",
+    "body": ["return ($0);"]
+  },
+  "interface": {
+    "prefix": "int",
+    "body": ["export interface I${1:Name} {$0}"]
+  },
+  "template string placeholder": {
+    "prefix": "sp",
+    "body": ["\\$\\{$0\\}"]
+  },
+  "if": {
+    "prefix": "iff",
+    "body": ["if (${1:condition}) {", "  $0", "}"]
+  },
+  "if/else": {
+    "prefix": "ife",
+    "body": ["if (${1:condition}) {", "  $0", "} else {", "}"]
+  },
+  "if (single line)": {
+    "prefix": "ifs",
+    "body": ["if (${1:condition}) { $0; }"]
+  },
+  "const": {
+    "prefix": "cc",
+    "body": ["const $0"]
+  },
+  "export const": {
+    "prefix": "ec",
+    "body": ["export const $0"]
+  },
+  "export": {
+    "prefix": "e",
+    "body": ["export {$0}"]
+  },
+  "export default": {
+    "prefix": "ed",
+    "body": ["export default $0"]
+  },
+  "export *": {
+    "prefix": "es",
+    "body": ["export * from '$0';"]
+  },
+  "function": {
+    "prefix": "fn",
+    "body": ["${1:export }${2:async }function ${3:name}($4) {", "  $0", "}"]
+  },
+  "Arrow Function": {
+    "prefix": "ff",
+    "body": ["($1) => $0"]
+  },
+  "Arrow Function (async)": {
+    "prefix": "ffa",
+    "body": ["async ($1) => $0"]
+  },
+  "epic function": {
+    "prefix": "fne",
+    "body": [
+      "export function ${1:name}Epic(",
+      "  action$: ActionsObservable<${2:ActionType}>,",
+      "  store: Store<${3:StoreType}>,",
+      ") {",
+      "  return action$",
+      "    .ofType('$0')",
+      "    .map(action => {",
+      "      return { type: 'FOO' };",
+      "    });",
+      "}"
+    ]
+  },
+  "{};": {
+    "prefix": "bb",
+    "body": ["{$0};"]
+  },
+  "{},": {
+    "prefix": "bv",
+    "body": ["{$0},"]
+  },
+  "css({}),": {
+    "prefix": "bc",
+    "body": ["css({$0}),"]
+  },
+  "boxSizing": {
+    "prefix": "box",
+    "body": ["boxSizing: 'border-box',"]
+  },
+  "for of": {
+    "prefix": "forof",
+    "body": ["for (const ${1:item} of ${2:items}) {", "  $0", "}"]
+  },
+  "reduce": {
+    "prefix": "reduce",
+    "body": ["reduce((acc, value, i) => {$0}, ${1:initial});"]
+  },
+  "log.info": {
+    "prefix": "li",
+    "body": ["log.info(\"${1:title}\", ${2:$1});"]
+  },
+  "console.log": {
+    "prefix": "ll",
+    "body": ["console.log(\"${1:title}\", ${2:$1});"]
+  },
+  "console.log (simple)": {
+    "prefix": "lll",
+    "body": ["console.log($0);"]
+  },
+  "console.log (new line)": {
+    "prefix": "ln",
+    "body": ["console.log();"]
+  },
+  "console.log (HR)": {
+    "prefix": "lhr",
+    "body": ["console.log(\"-------------------------------------------\");"]
+  },
+  "console.group": {
+    "prefix": "lg",
+    "body": ["console.group(\"${1:title}\");", "${0}", "console.groupEnd();"]
+  },
+  "Destructure Props": {
+    "prefix": "da",
+    "body": ["${1:const} { $0 } = ${2:this.props};"]
+  },
+  "private function": {
+    "prefix": "pf",
+    "body": ["private ${1:name} = ($2) => {$0}"]
+  },
+  "require": {
+    "prefix": "rrr",
+    "body": ["require('${1}');$0"]
+  },
+  "import": {
+    "prefix": "imp",
+    "body": ["import ${1:* as }${2:module} from '${3:module}';$0"]
+  },
+  "import { part }": {
+    "prefix": "impp",
+    "body": ["import { ${3:part} } from '${2:module}';$0"]
+  },
+  "import React": {
+    "prefix": "impr",
+    "body": ["import * as React from 'react';$0"]
+  },
+  "import ReactNative": {
+    "prefix": "imprn",
+    "body": ["import { ${1:View} } from 'react-native';$0"]
+  },
+  "export from": {
+    "prefix": "ef",
+    "body": ["export { ${2:Part} } from './${1:path}'$0"]
+  },
+  "export * from": {
+    "prefix": "esf",
+    "body": ["export * from './${1:path}'$0"]
+  },
+  "import Ramda": {
+    "prefix": "impra",
+    "body": ["import * as R from 'ramda';$0"]
+  },
+  "test file": {
+    "prefix": "test",
+    "body": [
+      "import { expect } from 'chai';",
+      "",
+      "describe('${1:suite}', () => {",
+      "  $0",
+      "});"
+    ]
+  },
+  "describe ()=>": {
+    "prefix": "des",
+    "body": ["describe('${1:suite}', () => {", "  $0", "});"]
+  },
+  "describe (function)": {
+    "prefix": "desf",
+    "body": ["describe('${1:suite}', function() {", "  $0", "});"]
+  },
+  "it": {
+    "prefix": "itt",
+    "body": ["it('${1:does}', () => {$0});"]
+  },
+  "it (code)": {
+    "prefix": "itc",
+    "body": ["it('`${1:does}`', () => {$0});"]
+  },
+  "it (async)": {
+    "prefix": "ita",
+    "body": ["it('${1:does}', async () => {$0});"]
+  },
+  "it (props)": {
+    "prefix": "itp",
+    "body": ["it('`${1:does}`', () => this.props({ $0 }));"]
+  },
+  "describe.only": {
+    "prefix": "describeo",
+    "body": ["describe.only"]
+  },
+  "describe.skip": {
+    "prefix": "describes",
+    "body": ["describe.skip"]
+  },
+  "it.only": {
+    "prefix": "ito",
+    "body": ["it.only"]
+  },
+  "it.skip": {
+    "prefix": "its",
+    "body": ["it.skip"]
+  },
+  "beforeEach": {
+    "prefix": "be",
+    "body": ["beforeEach(() => {$0});"]
+  },
+  "beforeEach (async)": {
+    "prefix": "bea",
+    "body": ["beforeEach(async () => {$0});"]
+  },
+  "Comment - Docs": {
+    "prefix": "qd",
+    "body": ["/**", " * $0", " */"]
+  },
+  "Comment - Horizontal Rule": {
+    "prefix": "hr",
+    "body": [
+      "// -----------------------------------------------------------------------------"
+    ]
+  },
+  "Comment - Setup initial conditions": {
+    "prefix": "setup",
+    "body": ["// Setup initial conditions."]
+  },
+  "Comment - Finish up": {
+    "prefix": "finish",
+    "body": ["// Finish up."]
+  },
+  "Comment - TEMP": {
+    "prefix": "temp",
+    "body": ["// TEMP"]
+  },
+  "Comment - TSLint Disable Line": {
+    "prefix": "tsld",
+    "body": ["// tslint:disable-line"]
+  },
+  "expect - to.equal": {
+    "prefix": "exee",
+    "body": ["expect(${1:value}).to.equal(${2:result});$0"]
+  },
+  "expect - to.eql": {
+    "prefix": "exe",
+    "body": ["expect(${1:value}).to.eql(${2:result});$0"]
+  },
+  "expect - to.contain": {
+    "prefix": "ecc",
+    "body": ["expect(${1:value}).to.contain(${2:result});$0"]
+  },
+  "expect - instanceof": {
+    "prefix": "eit",
+    "body": ["expect(${1:value}).to.be.an.instanceof(${2:Type});$0"]
+  },
+  "expect - to throw": {
+    "prefix": "ett",
+    "body": [
+      "const fn = () => {$0};",
+      "expect(fn).to.throw(/${1:error-text}/);"
+    ]
+  },
+  "element (closed)": {
+    "prefix": "ell",
+    "body": ["<${1:tag}/>$0"]
+  },
+  "element": {
+    "prefix": "el",
+    "body": ["<${1:tag}>$0</${1:tag}>"]
+  },
+  "css: background": {
+    "prefix": "bg",
+    "body": ["background: $0"]
+  },
+  "css: background (RED)": {
+    "prefix": "bgr",
+    "body": ["backgroundColor: 'rgba(255, 0, 0, 0.1)', /* RED */ $0"]
+  },
+  "css: background (GREEN)": {
+    "prefix": "bgg",
+    "body": ["backgroundColor: 'rgba(0, 255, 0, 0.1)', /* GREEN */ $0"]
+  },
+  "css: background (BLUE)": {
+    "prefix": "bgb",
+    "body": ["backgroundColor: 'rgba(0, 0, 255, 0.1)', /* BLUE */ $0"]
+  },
+  "css: Absolute": {
+    "prefix": "abs",
+    "body": ["Absolute: ${1:'${2}'},$0"]
+  },
+  "css: rgba": {
+    "prefix": "rgba",
+    "body": ["${1:'}rgba(${2:255}, ${2:255}, ${2:255}, 0.${3:3})${1:'}$0"]
+  },
+  "css: position relative": {
+    "prefix": "pr",
+    "body": ["position: 'relative',$0"]
+  },
+  "css: border": {
+    "prefix": "border",
+    "body": ["border$0: `solid 1px \\${color.format(${1:-0.1})}`,"]
+  },
+  "css: display flex": {
+    "prefix": "flex",
+    "body": [
+      "display: 'flex',",
+      "flexDirection: 'row',",
+      "justifyContent: 'center',",
+      "alignItems: 'center',"
+    ]
+  },
+  "css: styles={ }": {
+    "prefix": "stylee",
+    "body": ["style={ styles.$1 }$0"]
+  },
+  "css: { ...styles.base }": {
+    "prefix": "css",
+    "body": ["{...styles.$1}$0"]
+  },
+  "const style = ": {
+    "prefix": "cs",
+    "body": ["const ${1:styles} = {", "  base: css({$0}),", "};"]
+  },
+  "css: className": {
+    "prefix": "cn",
+    "body": ["className={ css.className(styles.$1) }$0"]
+  },
+  "value: 100%": {
+    "prefix": "pp",
+    "body": ["'${1:100}%',"]
+  },
+  "event handler": {
+    "prefix": "eh",
+    "body": [
+      "export type ${1:Click}Event = {$0};",
+      "export type ${1:Click}EventHandler = (e: ${1:Click}Event) => void;"
+    ]
+  },
+  "export type": {
+    "prefix": "et",
+    "body": ["export type "]
+  },
+  "ref (react)": {
+    "prefix": "ref",
+    "body": [
+      "private ${1:name}: ${2:Type};",
+      "private ${1:name}Ref = (ref: ${2:Type}) => this.${1:name} = ref;$0"
+    ]
+  },
+  "React: lifecycle": {
+    "prefix": "life",
+    "body": [
+      "public componentWillMount() {}",
+      "public componentDidMount() {}",
+      "public componentWillReceiveProps(nextProps) {}",
+      "public shouldComponentUpdate(nextProps, nextState) {}",
+      "public componentWillUpdate(nextProps, nextState) {}",
+      "public componentDidUpdate(prevProps, prevState) {}",
+      "public componentWillUnmount() {}"
+    ]
+  },
+  "React Class Component": {
+    "prefix": "tsx",
+    "body": [
+      "import { React, css } from '../../common';",
+      "",
+      "export interface I${1:Name}Props {}",
+      "",
+      "/**",
+      " * $0",
+      " */",
+      "export class ${1:Name} extends React.PureComponent<I${1:Name}Props, {}> {",
+      "  public render() {",
+      "    const styles = {",
+      "      base: css({}),",
+      "    }",
+      "    return (",
+      "      <div {...styles.base}>${1:Name}</div>",
+      "    );",
+      "  }",
+      "}",
+      ""
+    ]
+  },
+  "React Stateless Component": {
+    "prefix": "tsxf",
+    "body": [
+      "import { React, css } from '../../common';",
+      "",
+      "export interface I${1:Name}Props {}",
+      "",
+      "",
+      "/**",
+      " * $0",
+      " */",
+      "export const ${1:Name} = (props: I${1:Name}Props) => {",
+      "  const styles = {",
+      "    base: css({}),",
+      "  }",
+      "  return (",
+      "    <${2:div} {...styles.base}>${1:Name}</${2:div}>",
+      "  );",
+      "};",
+      ""
+    ]
+  },
+  "dangerouslySetInnerHTML": {
+    "prefix": "danger",
+    "body": ["<div dangerouslySetInnerHTML={ __html: $0 } />"]
+  },
+  "React Observable": {
+    "prefix": "ob",
+    "body": [
+      "private unmounted$ = new Subject();",
+      "",
+      "",
+      "public componentWillUnmount() {",
+      "  this.unmounted$.next();",
+      "}"
+    ]
+  },
+  "React Observable (Props)": {
+    "prefix": "obp",
+    "body": [
+      "private unmounted$ = new Subject();",
+      "private props$ = new BehaviorSubject<${1:PropsType}>(this.props);",
+      "",
+      "public componentWillMount() {",
+      "  const props$ = this.props$.takeUntil(this.unmounted$);$0",
+      "}",
+      "",
+      "public componentWillReceiveProps(nextProps: ${1:PropsType}) {",
+      "  this.props$.next(nextProps);",
+      "}",
+      "",
+      "public componentWillUnmount() {",
+      "  this.unmounted$.next();",
+      "}"
+    ]
+  }
 }
