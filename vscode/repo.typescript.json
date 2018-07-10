@@ -258,6 +258,10 @@
     "prefix": "tsld",
     "body": ["// tslint:disable-line"]
   },
+  "Comment - Typsecript Ignore": {
+    "prefix": "tsignore",
+    "body": ["// @ts-ignore"]
+  },
   "expect - to.equal": {
     "prefix": "exee",
     "body": ["expect(${1:value}).to.equal(${2:result});$0"]
