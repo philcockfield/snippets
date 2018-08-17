@@ -404,7 +404,7 @@
       "/**",
       " * $0",
       " */",
-      "export class ${1:Name} extends React.PureComponent<I${1:Name}Props, {}> {",
+      "export class ${1:Name} extends React.PureComponent<I${1:Name}Props> {",
       "  public render() {",
       "    const styles = {",
       "      base: css({}),",
